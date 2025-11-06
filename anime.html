@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AniStream Studio - Watch & Discover Anime</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS for scrollbar and other styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0c0c; /* Slightly off-black for depth */
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Gradient for hero overlay */
+        .hero-gradient {
+            background-image: linear-gradient(to top, rgba(12, 12, 12, 1) 10%, rgba(12, 12, 12, 0.6) 50%, rgba(12, 12, 12, 0) 100%);
+        }
+        
+        /* Gradient for card overlay */
+        .card-gradient {
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+        
+        .hero-bg {
+            background-image: url('https://placehold.co/1920x1080/4a044e/ffffff?text=Featured+Anime');
+            background-size: cover;
+            background-position: center top;
+        }
+        
+        /* Custom red color */
+        .brand-red {
+            background-color: #E50914;
+        }
+        .brand-red-hover:hover {
+            background-color: #f40612;
+        }
+        .text-brand-red {
+            color: #E50914;
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo & Nav Links -->
+            <div class="flex items-center space-x-8">
+                <a href="#" class="text-3xl font-bold text-brand-red">AniStream</a>
+                <ul class="hidden md:flex items-center space-x-6">
+                    <li><a href="#" class="font-medium text-white hover:text-gray-300 transition duration-300">Home</a></li>
+                    <li><a href="#" class="font-medium text-gray-300 hover:text-gray-300 transition duration-300">Series</a></li>
+                    <li><a href="#" class="font-medium text-gray-300 hover:text-gray-300 transition duration-300">Films</a></li>
+                    <li><a href="#" class="font-medium text-gray-300 hover:text-gray-300 transition duration-300">Studio</a></li>
+                    <li><a href="#" class="font-medium text-gray-300 hover:text-gray-300 transition duration-300">My List</a></li>
+                </ul>
+            </div>
+            
+            <!-- Right Icons -->
+            <div class="flex items-center space-x-4">
+                <button class_name="text-white hover:text-gray-300 transition duration-300">
+                    <!-- Search Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+                <button class="text-white hover:text-gray-300 transition duration-300">
+                    <!-- Bell Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                </button>
+                <button>
+                    <!-- User/Profile Icon -->
+                    <img src="https://placehold.co/40x40/e50914/ffffff?text=U" alt="User Profile" class="w-8 h-8 rounded-md">
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg h-[85vh] md:h-[95vh] relative flex flex-col justify-end">
+            <div class="absolute inset-0 hero-gradient"></div>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 pb-16 md:pb-24 relative z-10 w-full max-w-3xl">
+                <h1 class="text-5xl md:text-7xl font-black text-white mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">Cybernetic Dawn</h1>
+                <p class="text-lg text-gray-200 mb-8 leading-relaxed max-w-2xl">
+                    In a neon-drenched future, a rogue android and a disillusioned hacker uncover a conspiracy that could shatter the fragile peace between humans and machines.
+                </p>
+                <div class="flex space-x-4">
+                    <button class="brand-red brand-red-hover flex items-center justify-center px-8 py-3 rounded-md text-white font-bold text-lg transition duration-300">
+                        <!-- Play Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mr-2"><path d="M5 3l14 9-14 9V3z"></path></svg>
+                        Play
+                    </button>
+                    <button id="open-modal-btn" class="bg-gray-700 bg-opacity-80 hover:bg-opacity-100 flex items-center justify-center px-8 py-3 rounded-md text-white font-bold text-lg transition duration-300">
+                        <!-- Info Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        More Info
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Carousels -->
+        <div class="py-12 space-y-12">
+            
+            <!-- Carousel: Trending Now -->
+            <section class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl font-bold text-white mb-4">Trending Now</h2>
+                <div class="flex overflow-x-auto space-x-4 no-scrollbar pb-4">
+                    <!-- Anime Card -->
+                    <div class="flex-shrink-0 w-48 md:w-64 group cursor-pointer">
+                        <div class="relative rounded-lg overflow-hidden shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105">
+                            <img src="https://placehold.co/400x600/7f1d1d/ffffff?text=Action+Saga" alt="Anime Title 1" class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 card-gradient flex flex-col justify-end p-3">
+                                <h3 class="text-white text-lg font-semibold truncate">Void Drifters</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat Card -->
+                    <div class="flex-shrink-0 w-48 md:w-64 group cursor-pointer">
+                        <div class="relative rounded-lg overflow-hidden shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105">
+                            <img src="https://placehold.co/400x600/1d4ed8/ffffff?text=School+Life" alt="Anime Title 2" class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 card-gradient flex flex-col justify-end p-3">
+                                <h3 class="text-white text-lg font-semibold truncate">Cherry Blossom Cafe</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 w-48 md:w-64 group cursor-pointer">
+                        <div class="relative rounded-lg overflow-hidden shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105">
+                            <img src="https://placehold.co/400x600/581c87/ffffff?text=Fantasy" alt="Anime Title 3" class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 card-gradient flex flex-col justify-end p-3">
+                                <h3 class="text-white text-lg font-semibold truncate">Grimoire Legacy</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 w-48 md:w-64 group cursor-pointer">
+                        <div class="relative rounded-lg overflow-hidden shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105">
+                            <img src="https://placehold.co/400x600/1e293b/ffffff?text=Sci-Fi" alt="Anime Title 4" class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 card-gradient flex flex-col justify-end p-3">
+                                <h3 class="text-white text-lg font-semibold truncate">Starship Vagabond</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 w-48 md:w-64 group cursor-pointer">
+                        <div class="relative rounded-lg overflow-hidden shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105">
+                            <img src="https://placehold.co/400x600/b45309/ffffff?text=Adventure" alt="Anime Title 5" class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 card-gradient flex flex-col justify-end p-3">
+                                <h3 class="text-white text-lg font-semibold truncate">The Last Nomad</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Carousel: New From AniStream Studio -->
+            <section class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl font-bold text-white mb-4">New From AniStream Studio</h2>
+                <div class="flex overflow-x-auto space-x-4 no-scrollbar pb-4">
+                    <!-- Studio Card -->
+                    <div class="flex-shrink-0 w-72 md:w-96 group cursor-pointer">
+                        <div class="relative rounded-lg overflow-hidden shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105">
+                            <img src="https://placehold.co/600x340/064e3b/ffffff?text=Studio+Project+1" alt="Studio Project 1" class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 card-gradient flex flex-col justify-end p-4">
+                                <h3 class="text-white text-xl font-bold truncate">Project: Aether</h3>
+                                <p class="text-gray-300 text-sm">Our most ambitious fantasy series yet.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat Studio Card -->
+                    <div class="flex-shrink-0 w-72 md:w-96 group cursor-pointer">
+                        <div class="relative rounded-lg overflow-hidden shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105">
+                            <img src="https://placehold.co/600x340/6d28d9/ffffff?text=Studio+Project+2" alt="Studio Project 2" class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 card-gradient flex flex-col justify-end p-4">
+                                <h3 class="text-white text-xl font-bold truncate">Midnight Diner: Tokyo</h3>
+                                <p class="text-gray-300 text-sm">A heartwarming new slice-of-life film.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 w-72 md:w-96 group cursor-pointer">
+                        <div class="relative rounded-lg overflow-hidden shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105">
+                            <img src="https://placehold.co/600x340/b91c1c/ffffff?text=Behind+the+Scenes" alt="Behind the Scenes" class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 card-gradient flex flex-col justify-end p-4">
+                                <h3 class="text-white text-xl font-bold truncate">The Making of Cybernetic Dawn</h3>
+                                <p class="text-gray-300 text-sm">Go behind the scenes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Carousel: Iconic Action -->
+            <section class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl font-bold text-white mb-4">Iconic Action</h2>
+                <div class="flex overflow-x-auto space-x-4 no-scrollbar pb-4">
+                    <div class="flex-shrink-0 w-48 md:w-64 group cursor-pointer">
+                        <div class="relative rounded-lg overflow-hidden shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105">
+                            <img src="https://placehold.co/400x600/7f1d1d/ffffff?text=Action+1" alt="Anime Title 1" class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 card-gradient flex flex-col justify-end p-3">
+                                <h3 class="text-white text-lg font-semibold truncate">Blazing Fist</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 w-48 md:w-64 group cursor-pointer">
+                        <div class="relative rounded-lg overflow-hidden shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105">
+                            <img src="https://placehold.co/400x600/7f1d1d/ffffff?text=Action+2" alt="Anime Title 2" class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 card-gradient flex flex-col justify-end p-3">
+                                <h3 class="text-white text-lg font-semibold truncate">Steel Alchemist</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 w-48 md:w-64 group cursor-pointer">
+                        <div class="relative rounded-lg overflow-hidden shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105">
+                            <img src="https://placehold.co/400x600/7f1d1d/ffffff?text=Action+3" alt="Anime Title 3" class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 card-gradient flex flex-col justify-end p-3">
+                                <h3 class="text-white text-lg font-semibold truncate">Demon Slayer</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 w-48 md:w-64 group cursor-pointer">
+                        <div class="relative rounded-lg overflow-hidden shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-105">
+                            <img src="https://placehold.co/400x600/7f1d1d/ffffff?text=Action+4" alt="Anime Title 4" class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 card-gradient flex flex-col justify-end p-3">
+                                <h3 class="text-white text-lg font-semibold truncate">Hunter x Hunter</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 mt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h5 class="font-semibold text-white mb-3">Company</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Studio</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-white mb-3">Help</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Account</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-white mb-3">Legal</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Use</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cookie Preferences</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-white mb-3">Social</h5>
+                    <div class="flex space-x-4">
+                        <!-- Social Icons -->
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.294h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"></path></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-2.723 0-4.927 2.204-4.927 4.927 0 .386.044.762.128 1.126-4.099-.205-7.734-2.166-10.169-5.155-.424.724-.668 1.566-.668 2.465 0 1.708.87 3.215 2.19 4.098-.807-.026-1.566-.248-2.229-.616v.063c0 2.386 1.697 4.378 3.949 4.83-.413.112-.848.172-1.296.172-.317 0-.625-.031-.926-.088.627 1.954 2.446 3.376 4.6 3.417-1.683 1.319-3.803 2.105-6.106 2.105-.398 0-.79-.023-1.175-.069 2.179 1.397 4.768 2.212 7.548 2.212 9.057 0 14.01-7.502 14.01-14.01 0-.213-.005-.426-.014-.637.962-.695 1.797-1.56 2.457-2.541z"></path></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919 1.266.058 1.646.07 4.85.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.308.196-6.101 1.99-6.298 6.298-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.196 4.308 1.99 6.101 6.298 6.298 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c4.308-.196 6.101-1.99 6.298-6.298.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.196-4.308-1.99-6.101-6.298-6.298-1.28-.058-1.688-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-500">&copy; 2025 AniStream Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Info Modal -->
+    <div id="info-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <!-- Modal Overlay -->
+            <div class="fixed inset-0 bg-black bg-opacity-80 transition-opacity" id="modal-overlay"></div>
+            
+            <!-- Modal Content -->
+            <div class="bg-gray-900 rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-3xl sm:w-full z-10">
+                <div class="relative">
+                    <img src="https://placehold.co/1600x900/4a044e/ffffff?text=Cybernetic+Dawn" alt="Cybernetic Dawn" class="w-full h-64 object-cover">
+                    <button id="close-modal-btn" class="absolute top-3 right-3 text-white bg-black bg-opacity-50 rounded-full p-1 hover:bg-opacity-75">
+                        <!-- Close (X) Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="p-6 md:p-8">
+                    <h2 class="text-3xl font-bold text-white mb-4">Cybernetic Dawn</h2>
+                    <p class="text-gray-300 mb-6">
+                        In a neon-drenched future, a rogue android and a disillusioned hacker uncover a conspiracy that could shatter the fragile peace between humans and machines. This series explores themes of identity, consciousness, and what it truly means to be human.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">Sci-Fi</span>
+                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">Cyberpunk</span>
+                        <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">Action</span>
+                        <span class_name="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">TV-MA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Modal functionality
+        const openModalBtn = document.getElementById('open-modal-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const modal = document.getElementById('info-modal');
+        const modalOverlay = document.getElementById('modal-overlay');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        if (openModalBtn) {
+            openModalBtn.addEventListener('click', openModal);
+        }
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', closeModal);
+        }
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(12, 12, 12, 0.9)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.backgroundColor = 'transparent';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
